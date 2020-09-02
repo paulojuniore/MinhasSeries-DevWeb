@@ -1,8 +1,12 @@
 import React from 'react';
 
+import Header from './components/Header';
+
 function App() {
   return (
-    <h1>Minhas séries Frontend</h1>
+    <>
+      <Header />
+    </>
   );
 }
 
