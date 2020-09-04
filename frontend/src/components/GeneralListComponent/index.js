@@ -10,7 +10,7 @@ const GeneralListComponent = (props) => {
         { props.title }
       </h2>
       <Link to='generos/novoGenero' className='btn btn-primary'>
-        Novo { props.subtitle }
+        { props.button_title }
       </Link>
       <div className='input-group-mb-3'>
         <input 

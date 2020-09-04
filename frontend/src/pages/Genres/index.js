@@ -8,6 +8,7 @@ const Genres = () => {
   return (
     <GeneralListComponent
       title="Gêneros"
+      button_title="Novo gênero"
       subtitle="gênero"
       columns={columns}
     />

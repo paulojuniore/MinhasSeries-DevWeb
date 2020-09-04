@@ -8,6 +8,7 @@ const Series = () => {
   return (
     <GeneralListComponent
       title="Séries"
+      button_title="Nova série"
       subtitle="série"
       columns={columns}
     />
