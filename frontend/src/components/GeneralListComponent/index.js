@@ -24,8 +24,7 @@ const GeneralListComponent = (props) => {
       <table className='table table-striped'>
         <thead>
           <tr>
-            <th scope='col'>Gênero</th>
-            <th scope='col'>Ação</th>
+            { props.columns.map(line => <th scope='col'>{ line }</th>) }
           </tr>
         </thead>
         <tbody>
