@@ -3,9 +3,9 @@ import React from 'react';
 const Home = () => {
   return (
     <div className='container'>
-      <h3 style={{ marginTop: 30, marginBottom: 30, textAlign: "center" }}>
-        Todas as séries/filmes
-      </h3>
+      <h2 style={{ marginTop: 25, marginBottom: 25 }}>
+        Filmes e Séries 🎞️🎥
+      </h2>
       <table className='table table-striped'>
         <thead>
           <th scope='col'>#</th>

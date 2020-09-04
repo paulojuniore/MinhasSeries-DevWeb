@@ -1,10 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
+import './styles.css';
 
 const Genre = () => {
   return (
     <div className='container'>
-      <h2 className='main-text'>Gêneros</h2>
-      <a href='generos/novoGenero' className='btn btn-primary'>Cadastrar novo gênero</a>
+      <h2 className='title'>
+        Gêneros
+      </h2>
+      <Link to='generos/novoGenero' className='btn btn-primary'>
+        Novo gênero
+      </Link>
       <div className='input-group-mb-3'>
         <input 
           type="text" 

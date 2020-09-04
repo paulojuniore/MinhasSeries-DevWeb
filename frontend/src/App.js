@@ -5,6 +5,8 @@ import {
   Switch
 } from 'react-router-dom';
 
+import './styles/global.css';
+
 import Header from './components/Header';
 import Home from './components/Home';
 import Genre from './components/Genre';
