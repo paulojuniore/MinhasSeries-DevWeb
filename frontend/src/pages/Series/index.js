@@ -2,16 +2,16 @@ import React from 'react';
 
 import GeneralListComponent from '../../components/GeneralListComponent';
 
-const columns = ["#", "Gênero", "Ação"]
+const columns = ["#", "Nome", "Gênero", "Classificação", "Ação"]
 
-const Genres = () => {
+const Series = () => {
   return (
     <GeneralListComponent
-      title="Gêneros"
-      subtitle="gênero"
+      title="Séries"
+      subtitle="série"
       columns={columns}
     />
   )
 }
 
-export default Genres;
+export default Series;

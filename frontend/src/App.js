@@ -7,9 +7,10 @@ import {
 
 import './styles/global.css';
 
-import Genres from './pages/Genres';
 import Header from './components/Header';
 import BodyHome from './components/BodyHome';
+import Genres from './pages/Genres';
+import Series from './pages/Series';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Switch>
           <Route path='/' exact component={ BodyHome } />
           <Route path='/generos' component={ Genres } />
+          <Route path='/series' component={ Series } />
         </Switch>
       </div>
     </Router>

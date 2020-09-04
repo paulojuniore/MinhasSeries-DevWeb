@@ -17,7 +17,6 @@ const GeneralListComponent = (props) => {
           type="text" 
           className="form-control" 
           placeholder={`Pesquisar por ${props.subtitle}...`}
-          aria-label="Recipiente para nickname" 
           aria-describedby="basic-addon2" 
         />
       </div>
@@ -29,6 +28,7 @@ const GeneralListComponent = (props) => {
         </thead>
         <tbody>
            <tr>
+             <th>1</th>
              <td>Ação</td>
              <td>Editar/Remover</td>
            </tr>
