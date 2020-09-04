@@ -3,20 +3,20 @@ import { Link } from 'react-router-dom';
 
 import './styles.css';
 
-const Genre = () => {
+const GeneralListComponent = (props) => {
   return (
     <div className='container'>
       <h2 className='title'>
-        Gêneros
+        { props.title }
       </h2>
       <Link to='generos/novoGenero' className='btn btn-primary'>
-        Novo gênero
+        Novo { props.subtitle }
       </Link>
       <div className='input-group-mb-3'>
         <input 
           type="text" 
           className="form-control" 
-          placeholder="Pesquisar por gênero..." 
+          placeholder={`Pesquisar por ${props.subtitle}...`}
           aria-label="Recipiente para nickname" 
           aria-describedby="basic-addon2" 
         />
@@ -39,4 +39,4 @@ const Genre = () => {
   );
 }
 
-export default Genre;
+export default GeneralListComponent;

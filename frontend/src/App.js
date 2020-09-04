@@ -7,9 +7,9 @@ import {
 
 import './styles/global.css';
 
+import Genres from './pages/Genres';
 import Header from './components/Header';
-import Home from './components/Home';
-import Genre from './components/Genre';
+import BodyHome from './components/BodyHome';
 
 function App() {
   return (
@@ -17,8 +17,8 @@ function App() {
       <Header />
       <div className="App">
         <Switch>
-          <Route path='/' exact component={ Home } />
-          <Route path='/generos' component={ Genre } />
+          <Route path='/' exact component={ BodyHome } />
+          <Route path='/generos' component={ Genres } />
         </Switch>
       </div>
     </Router>

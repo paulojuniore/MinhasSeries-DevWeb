@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Home = () => {
+const BodyHome = () => {
   return (
     <div className='container'>
       <h2 style={{ marginTop: 25, marginBottom: 25 }}>
-        Filmes e Séries 🎞️🎥
+        Filmes e Séries <span role="img" aria-label="Emojis">🎞️🎥</span>
       </h2>
       <table className='table table-striped'>
         <thead>
@@ -50,4 +50,4 @@ const Home = () => {
   );
 }
 
-export default Home;
+export default BodyHome;
