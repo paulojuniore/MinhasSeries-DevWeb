@@ -11,8 +11,8 @@ import Header from './components/Header';
 import BodyHome from './components/BodyHome';
 import Genres from './pages/Genres';
 import Series from './pages/Series';
-import NewGenre from './pages/NewGenre';
-import NewSerie from './pages/NewSerie';
+import NewGenrePage from './pages/NewGenrePage';
+import NewSeriePage from './pages/NewSeriePage';
 
 function App() {
   return (
@@ -22,9 +22,9 @@ function App() {
         <Switch>
           <Route path='/' exact component={ BodyHome } />
           <Route path='/generos' exact component={ Genres } />
-          <Route path='/generos/novoGenero' exact component={ NewGenre } />
+          <Route path='/generos/novoGenero' exact component={ NewGenrePage } />
           <Route path='/series' exact component={ Series } />
-          <Route path='/series/novaSerie' exact component={ NewSerie } />
+          <Route path='/series/novaSerie' exact component={ NewSeriePage } />
         </Switch>
       </div>
     </Router>

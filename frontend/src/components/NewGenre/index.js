@@ -1,9 +1,9 @@
 import React from 'react';
 
-const GeneralNewItemComponent = (props) => {
+const NewGenre = () => {
   return (
     <div className="container">
-      <h3 style={{ marginTop: 30 }}>{ props.title }</h3>
+      <h3 style={{ marginTop: 30 }}>Cadastrar novo gênero</h3>
       <form>
         <div className="form-group">
           <input 
@@ -21,4 +21,4 @@ const GeneralNewItemComponent = (props) => {
   )
 }
 
-export default GeneralNewItemComponent;
+export default NewGenre;
