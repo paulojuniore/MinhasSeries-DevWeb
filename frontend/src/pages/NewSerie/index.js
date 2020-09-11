@@ -2,12 +2,12 @@ import React from 'react';
 
 import GeneralNewItemComponent from '../../components/GeneralNewItemComponent';
 
-const NewGenre = () => {
+const NewSerie = () => {
   return (
     <GeneralNewItemComponent 
-      title='Cadastrar novo gênero'
+      title='Cadastrar novo(a) série/filme'
     />
-  )
+  );
 }
 
-export default NewGenre;
+export default NewSerie;
