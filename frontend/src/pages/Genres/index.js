@@ -11,6 +11,7 @@ const Genres = () => {
       button_title="Novo gênero"
       subtitle="gênero"
       columns={columns}
+      path="/generos/novoGenero"
     />
   )
 }

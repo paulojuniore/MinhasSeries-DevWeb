@@ -11,6 +11,7 @@ import Header from './components/Header';
 import BodyHome from './components/BodyHome';
 import Genres from './pages/Genres';
 import Series from './pages/Series';
+import NewGenre from './pages/NewGenre';
 
 function App() {
   return (
@@ -19,8 +20,9 @@ function App() {
       <div className="App">
         <Switch>
           <Route path='/' exact component={ BodyHome } />
-          <Route path='/generos' component={ Genres } />
-          <Route path='/series' component={ Series } />
+          <Route path='/generos' exact component={ Genres } />
+          <Route path='/generos/novoGenero' exact component={ NewGenre } />
+          <Route path='/series' exact component={ Series } />
         </Switch>
       </div>
     </Router>

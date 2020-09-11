@@ -9,7 +9,7 @@ const GeneralListComponent = (props) => {
       <h2 className='title'>
         { props.title }
       </h2>
-      <Link to='generos/novoGenero' className='btn btn-primary'>
+      <Link to={ props.path } className='btn btn-primary'>
         { props.button_title }
       </Link>
       <div className='input-group-mb-3'>

@@ -11,6 +11,7 @@ const Series = () => {
       button_title="Nova série"
       subtitle="série"
       columns={columns}
+      path="series/novaSerie"
     />
   )
 }
