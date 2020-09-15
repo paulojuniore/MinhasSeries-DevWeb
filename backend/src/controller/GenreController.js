@@ -9,6 +9,12 @@ module.exports = {
     return res.json(genre);
   },
 
+  async list(req, res) {
+    const genres = await Genre.findAll();
+
+    return res.json(genres);
+  },
+
   async index(req, res) {
     const { id } = req.params;
 
