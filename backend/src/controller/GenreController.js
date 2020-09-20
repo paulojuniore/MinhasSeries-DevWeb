@@ -6,13 +6,13 @@ module.exports = {
 
     const genre = await Genre.create({ genero });
 
-    return res.json(genre);
+    return res.status(200).json(genre);
   },
 
   async list(req, res) {
     const genres = await Genre.findAll();
 
-    return res.json(genres);
+    return res.status(200).json(genres);
   },
 
   async index(req, res) {
@@ -21,7 +21,7 @@ module.exports = {
     const genre = await Genre.findByPk(id);
 
     if (genre) {
-      return res.json(genre);
+      return res.status(200).json(genre);
     } else {
       return res.status(404).json({ "error": "The genre with the specified id not exists." });
     }
