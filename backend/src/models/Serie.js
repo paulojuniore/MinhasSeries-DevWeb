@@ -1,17 +1,19 @@
 const { Model, DataTypes } = require('sequelize');
 
-class MoviesOrSeries extends Model {
+class Serie extends Model {
   static init(connection) {
     super.init({
       nome: DataTypes.STRING,
+      eh_filme: DataTypes.BOOLEAN,
       id_genero: DataTypes.INTEGER,
       classificacao: DataTypes.INTEGER,
+      eh_favorita: DataTypes.BOOLEAN,
     }, {
       sequelize: connection,
       timestamps: false,
-      tableName: 'Series',
+      tableName: 'Serie',
     });
   }
 }
 
-module.exports = MoviesOrSeries;
+module.exports = Serie;

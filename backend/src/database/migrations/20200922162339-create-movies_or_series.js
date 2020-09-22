@@ -2,11 +2,12 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Series', { 
+    await queryInterface.createTable('Serie', { 
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         allowNull: false,
+        autoIncrement: true,
       },
       nome: {
         type: Sequelize.STRING(50),
@@ -15,7 +16,7 @@ module.exports = {
       },
       eh_filme: {
         type: Sequelize.BOOLEAN,
-        allowNull: false,
+        defaultValue: false,
       },
       id_genero: {
         type: Sequelize.INTEGER,
@@ -27,11 +28,15 @@ module.exports = {
       classificacao: {
         type: Sequelize.INTEGER,
         allowNull: false,
+      },
+      eh_favorita: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
       }
     });
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Series');
+    await queryInterface.dropTable('Serie');
   }
 };
