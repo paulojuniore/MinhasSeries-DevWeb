@@ -25,7 +25,23 @@ module.exports = {
       
       return res.status(200).json(serie_or_movie);
     }
+  },
 
+  async list(req, res) {
+    const series = await Serie.findAll();
 
+    return res.status(200).json(series);
+  },
+
+  async index(req, res) {
+    const { id } = req.params;
+
+    const serie = await Serie.findByPk(id);
+
+    if (serie) {
+      return res.status(200).json(serie);
+    } else {
+      return res.status(404).json({ "error": "The movie/serie with the specified id not exists." });
+    }
   }
 }

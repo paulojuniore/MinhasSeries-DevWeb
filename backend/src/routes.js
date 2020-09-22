@@ -12,6 +12,9 @@ routes.get('/', (req, res) => {
 routes.post('/generos', GenreController.store);
 routes.get('/generos', GenreController.list);
 routes.get('/generos/:id', GenreController.index);
+
 routes.post('/series', SeriesController.store);
+routes.get('/series', SeriesController.list);
+routes.get('/series/:id', SeriesController.index);
 
 module.exports = routes;
