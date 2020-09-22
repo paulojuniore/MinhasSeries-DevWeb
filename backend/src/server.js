@@ -10,5 +10,5 @@ app.use(express.json());
 app.use(routes);
 
 app.listen(process.env.PORT, process.env.HOST, function() {
-  console.log("Server started on port", process.env.PORT);
+  console.log("Server started on port:", process.env.PORT);
 });
