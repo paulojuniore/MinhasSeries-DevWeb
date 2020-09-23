@@ -1,9 +1,35 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+
+import api from '../../services/api';
 
 import './styles.css';
 
 const GeneralListComponent = (props) => {
+  const [generos, setGeneros] = useState([]);
+
+  useEffect(() => {
+    api.get('/generos')
+    .then(response => {
+      let responseOrdered = response.data.sort(compare);
+      setGeneros(responseOrdered);
+    });
+  })
+
+  // função de comparação de nomes de gêneros para ordenação.
+  function compare(a, b){
+    const genreA = a.genero.toUpperCase();
+    const genreB = b.genero.toUpperCase();
+    
+    let compare = 0;
+    if(genreA > genreB){
+        compare = 1;
+    } else if(genreA < genreB){
+        compare = -1;
+    }
+    return compare;
+  }
+
   return (
     <div className='container'>
       <h2 className='title'>
@@ -27,11 +53,15 @@ const GeneralListComponent = (props) => {
           </tr>
         </thead>
         <tbody>
-           <tr>
-             <th>1</th>
-             <td>Ação</td>
-             <td>Editar/Remover</td>
-           </tr>
+          { generos.map((genero, index) => {
+            return (
+              <tr>
+                <th>{ index+1 }</th>
+                <td>{ genero.genero }</td>
+                <td>Editar/Remover</td>
+              </tr>
+            )
+          }) }
         </tbody>
       </table>
     </div>
