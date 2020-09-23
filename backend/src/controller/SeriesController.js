@@ -28,7 +28,9 @@ module.exports = {
   },
 
   async list(req, res) {
-    const series = await Serie.findAll();
+    const series = await Serie.findAll({
+      include: { association: 'genero_serie' }
+    });
 
     return res.status(200).json(series);
   },
@@ -36,7 +38,9 @@ module.exports = {
   async index(req, res) {
     const { id } = req.params;
 
-    const serie = await Serie.findByPk(id);
+    const serie = await Serie.findByPk(id, {
+      include: { association: 'genero_serie' }
+    });
 
     if (serie) {
       return res.status(200).json(serie);

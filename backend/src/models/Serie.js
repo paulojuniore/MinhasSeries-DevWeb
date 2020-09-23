@@ -14,6 +14,10 @@ class Serie extends Model {
       tableName: 'Serie',
     });
   }
+
+  static associate(models) {
+    this.belongsTo(models.Genre, { foreignKey: 'id_genero', as: 'genero_serie' });
+  }
 }
 
 module.exports = Serie;

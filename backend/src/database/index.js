@@ -9,4 +9,6 @@ const connection = new Sequelize(dbConfig);
 Genre.init(connection);
 Serie.init(connection);
 
+Serie.associate(connection.models);
+
 module.exports = connection;
