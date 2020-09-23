@@ -12,6 +12,7 @@ const Genres = () => {
       subtitle="gênero"
       columns={columns}
       path="/generos/novoGenero"
+      type="generos"
     />
   )
 }

@@ -8,13 +8,22 @@ import './styles.css';
 
 const GeneralListComponent = (props) => {
   const [generos, setGeneros] = useState([]);
+  const [series, setSeries] = useState([]);
+  const type = props.type;
 
   useEffect(() => {
-    api.get('/generos')
-    .then(response => {
-      let responseOrdered = response.data.sort(compare);
-      setGeneros(responseOrdered);
-    });
+    if (type === 'generos') {
+      api.get('/generos')
+      .then(response => {
+        let responseOrdered = response.data.sort(compare);
+        setGeneros(responseOrdered);
+      });
+    } else if (type === 'series') {
+      api.get('/series')
+      .then(response => {
+        setSeries(response.data);
+      })
+    }
   })
 
   // função de comparação de nomes de gêneros para ordenação.
@@ -54,22 +63,43 @@ const GeneralListComponent = (props) => {
           </tr>
         </thead>
         <tbody>
-          { generos.map((genero, index) => {
-            return (
-              <tr>
-                <th>{ index+1 }</th>
-                <td>{ genero.genero }</td>
-                <td>
+          { (type === 'generos') && generos.map((genero, index) => {
+              return (
+                <tr>
+                  <th>{ index+1 }</th>
+                  <td>{ genero.genero }</td>
+                  <td>
                     <Link className="btn btn-danger">
-                        <MdDelete />
+                      <MdDelete />
                     </Link>
                     <Link className='btn btn-warning'>
-                        <MdEdit />
+                      <MdEdit />
                     </Link>
-                </td>
-              </tr>
-            )
-          }) }
+                  </td>
+                </tr>
+              )
+            }) 
+          }
+
+          { (type === 'series') && series.map((serie, index) => {
+              return (
+                <tr>
+                  <th>{ index+1 }</th>
+                  <td>{ serie.nome }</td>
+                  <td>{ serie.id_genero }</td>
+                  <td>{ serie.classificacao }</td>
+                  <td>
+                    <Link className="btn btn-danger">
+                      <MdDelete />
+                    </Link>
+                    <Link className='btn btn-warning'>
+                      <MdEdit />
+                    </Link>
+                  </td>
+                </tr>
+              )
+            })
+          }
         </tbody>
       </table>
     </div>

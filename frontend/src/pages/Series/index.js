@@ -12,6 +12,7 @@ const Series = () => {
       subtitle="série"
       columns={columns}
       path="series/novaSerie"
+      type="series"
     />
   )
 }
