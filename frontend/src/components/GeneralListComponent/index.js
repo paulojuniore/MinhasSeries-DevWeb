@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { MdDelete, MdEdit } from 'react-icons/md'; 
 
 import api from '../../services/api';
 
@@ -58,7 +59,14 @@ const GeneralListComponent = (props) => {
               <tr>
                 <th>{ index+1 }</th>
                 <td>{ genero.genero }</td>
-                <td>Editar/Remover</td>
+                <td>
+                    <Link className="btn btn-danger">
+                        <MdDelete />
+                    </Link>
+                    <Link className='btn btn-warning'>
+                        <MdEdit />
+                    </Link>
+                </td>
               </tr>
             )
           }) }
