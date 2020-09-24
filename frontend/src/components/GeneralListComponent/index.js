@@ -86,8 +86,8 @@ const GeneralListComponent = (props) => {
                 <tr>
                   <th>{ index+1 }</th>
                   <td>{ serie.nome }</td>
-                  <td>{ serie.id_genero }</td>
-                  <td>{ serie.classificacao }</td>
+                  <td>{ serie.genero_serie.genero }</td>
+                  <td>{ `+${serie.classificacao}` }</td>
                   <td>
                     <Link className="btn btn-danger">
                       <MdDelete />
