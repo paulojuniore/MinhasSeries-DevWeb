@@ -4,10 +4,12 @@ import {
   FormGroup, 
   Button
 } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
 
 import api from '../../services/api';
 
 const NewSerie = () => {
+  const history = useHistory();
   const [generos, setGeneros] = useState([]);
   const [serie, setSerie] = useState('');
   const [genero, setGenero] = useState('');
@@ -36,6 +38,29 @@ const NewSerie = () => {
     setEhFavorito(e.target.checked);
   }
 
+  function findGenreId() {
+    let id_genero = 0;
+    for (let index = 0; index < generos.length; index++) {
+      if (genero === generos[index].genero) {
+        id_genero = generos[index].id
+      }
+    }
+    return id_genero;
+  }
+
+  async function handleSubmit() {
+    const id_genero = findGenreId();
+    await api.post('/series', {
+      serie,
+      id_genero,
+      classificacao,
+      ehFilme,
+      ehFavorito
+    });
+
+    history.push('/series');
+  }
+
   return (
     <div className="container">
       <h3 style={{ marginTop: 30 }}>Cadastrar novo(a) filme/série</h3>
@@ -55,7 +80,7 @@ const NewSerie = () => {
             style={{width: 600, marginLeft: 30}} 
             onChange={ handleChangeGenreType }
           >
-            { generos.map(genero => <option>{ genero.genero }</option>) }
+            { generos.map((genero,index) => <option key={ index }>{ genero.genero }</option>) }
           </Form.Control>
 
           <Form.Label style={{marginTop: 35}}>Selecione a classificação indicativa:</Form.Label>
@@ -63,12 +88,12 @@ const NewSerie = () => {
             as="select" custom 
             style={{width: 600, marginLeft: 30}} 
             onChange={ handleChangeClassificationType }>
-            <option>L (Livre)</option>
-            <option>+10</option>
-            <option>+12</option>
-            <option>+14</option>
-            <option>+16</option>
-            <option>+18</option>
+            <option key="0">L (Livre)</option>
+            <option key="1">+10</option>
+            <option key="2">+12</option>
+            <option key="3">+14</option>
+            <option key="4">+16</option>
+            <option key="5">+18</option>
           </Form.Control>
 
           <div class="form-check" style={{ marginTop: 20 }}>
@@ -97,7 +122,8 @@ const NewSerie = () => {
       <Button 
         type="submit" 
         className="btn btn-primary"
-        style={{ marginTop: 15 }}>Cadastrar</Button>
+        style={{ marginTop: 15 }}
+        onClick={ handleSubmit }>Cadastrar</Button>
     </div>
   )
 }
