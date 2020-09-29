@@ -59,20 +59,20 @@ const GeneralListComponent = (props) => {
       <table className='table table-striped'>
         <thead>
           <tr>
-            { props.columns.map(line => <th scope='col'>{ line }</th>) }
+            { props.columns.map((line, index) => <th key={ index+1 } scope='col'>{ line }</th>) }
           </tr>
         </thead>
         <tbody>
           { (type === 'generos') && generos.map((genero, index) => {
               return (
-                <tr>
+                <tr key={ index+1 }>
                   <th>{ index+1 }</th>
                   <td>{ genero.genero }</td>
                   <td>
-                    <Link className="btn btn-danger">
+                    <Link to="#" className="btn btn-danger">
                       <MdDelete />
                     </Link>
-                    <Link className='btn btn-warning'>
+                    <Link to="#" className='btn btn-warning'>
                       <MdEdit />
                     </Link>
                   </td>
@@ -83,16 +83,16 @@ const GeneralListComponent = (props) => {
 
           { (type === 'series') && series.map((serie, index) => {
               return (
-                <tr>
+                <tr key={ index+1 }>
                   <th>{ index+1 }</th>
                   <td>{ serie.nome }</td>
                   <td>{ serie.genero_serie.genero }</td>
                   <td>{ `+${serie.classificacao}` }</td>
                   <td>
-                    <Link className="btn btn-danger">
+                    <Link to="#" className="btn btn-danger">
                       <MdDelete />
                     </Link>
-                    <Link className='btn btn-warning'>
+                    <Link to="#" className='btn btn-warning'>
                       <MdEdit />
                     </Link>
                   </td>

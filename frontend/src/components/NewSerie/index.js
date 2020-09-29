@@ -51,11 +51,11 @@ const NewSerie = () => {
   async function handleSubmit() {
     const id_genero = findGenreId();
     await api.post('/series', {
-      serie,
+      nome: serie,
+      eh_filme: ehFilme,
       id_genero,
       classificacao,
-      ehFilme,
-      ehFavorito
+      eh_favorita: ehFavorito
     });
 
     history.push('/series');
@@ -96,23 +96,21 @@ const NewSerie = () => {
             <option key="5">+18</option>
           </Form.Control>
 
-          <div class="form-check" style={{ marginTop: 20 }}>
-            <Form.Label 
-              class="form-check-label" 
-              for="exampleCheck1">É um filme?</Form.Label>
+          <div className="form-check" style={{ marginTop: 20 }}>
+            <Form.Label className="form-check-label" >É um filme?</Form.Label>
             <input 
               type="checkbox" 
-              class="form-check-input" 
+              className="form-check-input" 
               id="exampleCheck1"
               style={{ marginLeft: 15, width: 20, height: 20 }}
               onChange={ handleChangeIsMovie } />
           </div>
 
           <div className="form-check" style={{ marginTop: 20 }}>
-            <Form.Label class="form-check-label" for="exampleCheck1">É um de seus favoritos(as)?</Form.Label>
+            <Form.Label className="form-check-label">É um de seus favoritos(as)?</Form.Label>
             <input 
               type="checkbox" 
-              class="form-check-input" 
+              className="form-check-input" 
               id="exampleCheck1"
               style={{ marginLeft: 15, width: 20, height: 20 }}
               onChange={ handleChangeIsFavorite } />
