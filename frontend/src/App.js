@@ -8,7 +8,7 @@ import {
 import './styles/global.css';
 
 import Header from './components/Header';
-import BodyHome from './components/BodyHome';
+import Home from './pages/Home';
 import Genres from './pages/Genres';
 import Series from './pages/Series';
 import NewGenrePage from './pages/NewGenrePage';
@@ -20,7 +20,7 @@ function App() {
       <Header />
       <div className="App">
         <Switch>
-          <Route path='/' exact component={ BodyHome } />
+          <Route path='/' exact component={ Home } />
           <Route path='/generos' exact component={ Genres } />
           <Route path='/generos/novoGenero' exact component={ NewGenrePage } />
           <Route path='/series' exact component={ Series } />
