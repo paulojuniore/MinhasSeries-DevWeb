@@ -1,6 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+
+import api from '../../services/api';
 
 const BodyHome = () => {
+  const [series, setSeries] = useState([]);
+
+  useEffect(() => {
+    api.get('/series')
+      .then(response => {
+        setSeries(response.data);
+      });
+  })
+
   return (
     <div className='container'>
       <h2 style={{ marginTop: 25, marginBottom: 25 }}>
@@ -16,36 +27,16 @@ const BodyHome = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th>1</th>
-            <td>Supernatural</td>
-            <td>Ficção</td>
-            <td>16</td>
-          </tr>
-          <tr>
-            <th>2</th>
-            <td>Elite</td>
-            <td>Drama</td>
-            <td>17</td>
-          </tr>
-          <tr>
-            <th>3</th>
-            <td>The walking dead</td>
-            <td>Ação</td>
-            <td>18</td>
-          </tr>
-          <tr>
-            <th>4</th>
-            <td>Naruto</td>
-            <td>Anime</td>
-            <td>10</td>
-          </tr>
-          <tr>
-            <th>5</th>
-            <td>Dragon Ball Z</td>
-            <td>Anime</td>
-            <td>10</td>
-          </tr>
+          { series.map((serie, index) => {
+            return (
+              <tr key={index+1}>
+                <th>{index+1}</th>
+                <td>{ serie.nome }</td>
+                <td>{ serie.genero_serie.genero }</td>
+                <td>+{ serie.classificacao }</td>
+              </tr>
+            )
+          }) }
         </tbody>
       </table>
     </div>

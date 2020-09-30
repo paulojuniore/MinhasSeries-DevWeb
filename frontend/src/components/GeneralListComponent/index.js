@@ -14,15 +14,15 @@ const GeneralListComponent = (props) => {
   useEffect(() => {
     if (type === 'generos') {
       api.get('/generos')
-      .then(response => {
-        let responseOrdered = response.data.sort(compare);
-        setGeneros(responseOrdered);
-      });
+        .then(response => {
+          let responseOrdered = response.data.sort(compare);
+          setGeneros(responseOrdered);
+        });
     } else if (type === 'series') {
       api.get('/series')
-      .then(response => {
-        setSeries(response.data);
-      })
+        .then(response => {
+          setSeries(response.data);
+        });
     }
   })
 
