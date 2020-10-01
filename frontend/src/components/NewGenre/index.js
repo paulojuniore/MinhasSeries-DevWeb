@@ -12,7 +12,8 @@ const NewGenre = () => {
   const history = useHistory();
   const [genero, setGenero] = useState('');
 
-  async function handleSubmit() {
+  async function handleSubmit(event) {
+    event.preventDefault();
     await api.post('/generos', {
       genero
     });
@@ -23,23 +24,23 @@ const NewGenre = () => {
   return (
     <div className="container">
       <h3 style={{ marginTop: 30 }}>Cadastrar novo gênero</h3>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <FormGroup controlId="formBasic">
           <Form.Label style={{ marginTop: 15 }}>Nome do gênero</Form.Label>
           <Form.Control 
+            required
             type="text" 
             placeholder="Nome do gênero"
             value={ genero }
             onChange={ event => setGenero(event.target.value) }
           />
         </FormGroup>
+        <Button 
+          type="submit" 
+          className="btn btn-primary">
+          Cadastrar
+        </Button>
       </Form>
-      <Button 
-        type="submit" 
-        className="btn btn-primary"
-        onClick={ handleSubmit }>
-        Cadastrar
-      </Button>
     </div>
   )
 }

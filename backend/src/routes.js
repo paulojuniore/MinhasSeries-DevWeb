@@ -12,6 +12,7 @@ routes.get('/', (req, res) => {
 routes.post('/generos', GenreController.store);
 routes.get('/generos', GenreController.list);
 routes.get('/generos/:id', GenreController.index);
+routes.delete('/generos/:id', GenreController.delete);
 
 routes.post('/series', SeriesController.store);
 routes.get('/series', SeriesController.list);

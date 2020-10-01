@@ -40,6 +40,16 @@ const GeneralListComponent = (props) => {
     return compare;
   }
 
+  function handleDelete(genero) {
+    if (type === 'generos') {
+      if (window.confirm(`Deseja remover o gênero "${genero.genero}"?`)) {
+        console.log("apago")
+        api.delete(`/generos/${genero.id}`)
+          .then(response => console.log(response));
+      }
+    }
+  }
+
   return (
     <div className='container'>
       <h2 className='title'>
@@ -69,7 +79,7 @@ const GeneralListComponent = (props) => {
                   <th>{ index+1 }</th>
                   <td>{ genero.genero }</td>
                   <td>
-                    <Link to="#" className="btn btn-danger">
+                    <Link onClick={() => handleDelete(genero)} to="#" className="btn btn-danger">
                       <MdDelete />
                     </Link>
                     <Link to="#" className='btn btn-warning'>

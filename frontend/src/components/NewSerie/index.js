@@ -38,10 +38,10 @@ const NewSerie = () => {
     setEhFavorito(e.target.checked);
   }
 
-  function findGenreId() {
+  function findGenreId(genero_input) {
     let id_genero = 0;
     for (let index = 0; index < generos.length; index++) {
-      if (genero === generos[index].genero) {
+      if (generos[index].genero === genero_input) {
         id_genero = generos[index].id
       }
     }
@@ -49,17 +49,25 @@ const NewSerie = () => {
   }
 
   async function handleSubmit() {
-    const id_genero = findGenreId();
-    await api.post('/series', {
-      nome: serie,
-      eh_filme: ehFilme,
-      id_genero,
-      classificacao,
-      eh_favorita: ehFavorito
-    });
-
-    history.push('/series');
-  }
+    try {
+      if (genero === '') {
+        setGenero(generos[0].genero);
+      }
+      const id_genero = findGenreId(genero);
+      const response = await api.post('/series', {
+        nome: serie,
+        eh_filme: ehFilme,
+        id_genero,
+        classificacao,
+        eh_favorita: ehFavorito
+      });
+      console.log(response.data);
+      history.push('/series');
+    }
+    catch (error) {
+      console.log(error);
+    }
+  } 
 
   return (
     <div className="container">

@@ -25,5 +25,18 @@ module.exports = {
     } else {
       return res.status(404).json({ "error": "The genre with the specified id not exists." });
     }
+  },
+
+  async delete(req, res) {
+    const { id } = req.params;
+
+    const genre = await Genre.findOne({ where: { id } });
+
+    if (genre) {
+      genre.destroy();
+      return res.status(200).json(response);
+    } else {
+      return res.status(404).json({ "error": "The genre does not exists" })
+    }
   }
 }
