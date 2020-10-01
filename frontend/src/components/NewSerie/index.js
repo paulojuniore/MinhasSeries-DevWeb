@@ -48,20 +48,22 @@ const NewSerie = () => {
     return id_genero;
   }
 
-  async function handleSubmit() {
+  function handleSubmit(event) {
     try {
+      event.preventDefault();
       if (genero === '') {
         setGenero(generos[0].genero);
       }
       const id_genero = findGenreId(genero);
-      const response = await api.post('/series', {
+
+      api.post('/series', {
         nome: serie,
         eh_filme: ehFilme,
         id_genero,
         classificacao,
         eh_favorita: ehFavorito
       });
-      console.log(response.data);
+
       history.push('/series');
     }
     catch (error) {
@@ -72,10 +74,11 @@ const NewSerie = () => {
   return (
     <div className="container">
       <h3 style={{ marginTop: 30 }}>Cadastrar novo(a) filme/série</h3>
-      <Form>
+      <Form onSubmit={ handleSubmit }>
         <FormGroup controlId="formBasic">
           <Form.Label style={{ marginTop: 15 }}>Nome do(a) série/filme:</Form.Label>
           <Form.Control 
+            required
             type="text" 
             placeholder="Nome do(a) série/filme"
             value={ serie }
@@ -83,6 +86,7 @@ const NewSerie = () => {
 
           <Form.Label style={{marginTop: 35}}>Selecione o gênero:</Form.Label>
           <Form.Control 
+            required
             as="select" 
             custom 
             style={{width: 600, marginLeft: 30}} 
@@ -93,6 +97,7 @@ const NewSerie = () => {
 
           <Form.Label style={{marginTop: 35}}>Selecione a classificação indicativa:</Form.Label>
           <Form.Control 
+            required
             as="select" custom 
             style={{width: 600, marginLeft: 30}} 
             onChange={ handleChangeClassificationType }>
@@ -124,12 +129,11 @@ const NewSerie = () => {
               onChange={ handleChangeIsFavorite } />
           </div>
         </FormGroup>
+        <Button 
+          type="submit" 
+          className="btn btn-primary"
+          style={{ marginTop: 15 }}>Cadastrar</Button>
       </Form>
-      <Button 
-        type="submit" 
-        className="btn btn-primary"
-        style={{ marginTop: 15 }}
-        onClick={ handleSubmit }>Cadastrar</Button>
     </div>
   )
 }

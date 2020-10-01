@@ -12,11 +12,12 @@ const NewGenre = () => {
   const history = useHistory();
   const [genero, setGenero] = useState('');
 
-  async function handleSubmit(event) {
+  function handleSubmit(event) {
     event.preventDefault();
-    await api.post('/generos', {
+    api.post('/generos', {
       genero
-    });
+    })
+      .then(response => console.log(response));
     history.push('/generos');
     setGenero('');
   }

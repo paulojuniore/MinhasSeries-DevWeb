@@ -40,11 +40,16 @@ const GeneralListComponent = (props) => {
     return compare;
   }
 
-  function handleDelete(genero) {
+  function handleDelete(dado) {
     if (type === 'generos') {
-      if (window.confirm(`Deseja remover o gênero "${genero.genero}"?`)) {
-        console.log("apago")
-        api.delete(`/generos/${genero.id}`)
+      if (window.confirm(`Deseja remover o gênero "${dado.genero}"?`)) {
+        api.delete(`/generos/${dado.id}`)
+          .then(response => console.log(response));
+      }
+    } 
+    else if (type === 'series') {
+      if (window.confirm(`Deseja remover a série/filme "${dado.nome}"?`)) {
+        api.delete(`/series/${dado.id}`)
           .then(response => console.log(response));
       }
     }
@@ -99,7 +104,7 @@ const GeneralListComponent = (props) => {
                   <td>{ serie.genero_serie.genero }</td>
                   <td>{ `+${serie.classificacao}` }</td>
                   <td>
-                    <Link to="#" className="btn btn-danger">
+                    <Link onClick={() => handleDelete(serie)} to="#" className="btn btn-danger">
                       <MdDelete />
                     </Link>
                     <Link to="#" className='btn btn-warning'>

@@ -47,5 +47,18 @@ module.exports = {
     } else {
       return res.status(404).json({ "error": "The movie/serie with the specified id not exists." });
     }
+  },
+
+  async delete(req, res) {
+    const { id } = req.params;
+
+    const serie_or_movie = await Serie.findOne({ where: { id } });
+
+    if (serie_or_movie) {
+      await serie_or_movie.destroy();
+      return res.status(200).json({ "deleted": "true" });
+    } else {
+      return res.status(404).json({ "error": "The serie/movie does not exists" });
+    }
   }
 }

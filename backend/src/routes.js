@@ -17,5 +17,6 @@ routes.delete('/generos/:id', GenreController.delete);
 routes.post('/series', SeriesController.store);
 routes.get('/series', SeriesController.list);
 routes.get('/series/:id', SeriesController.index);
+routes.delete('/series/:id', SeriesController.delete);
 
 module.exports = routes;

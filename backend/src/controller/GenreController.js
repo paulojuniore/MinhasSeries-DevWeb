@@ -4,9 +4,14 @@ module.exports = {
   async store(req, res) {
     const { genero } = req.body;
 
-    const genre = await Genre.create({ genero });
+    const genre = await Genre.findOne({ where: { genero } });
 
-    return res.status(200).json(genre);
+    if (genre) {
+      return res.status(200).json(genre);
+    } else {
+      const genre = await Genre.create({ genero });
+      return res.status(200).json(genre);
+    }
   },
 
   async list(req, res) {
@@ -33,10 +38,10 @@ module.exports = {
     const genre = await Genre.findOne({ where: { id } });
 
     if (genre) {
-      genre.destroy();
-      return res.status(200).json(response);
+      await genre.destroy();
+      return res.status(200).json({ "deleted": "true" });;
     } else {
-      return res.status(404).json({ "error": "The genre does not exists" })
+      return res.status(404).json({ "error": "The genre does not exists" });
     }
   }
 }
