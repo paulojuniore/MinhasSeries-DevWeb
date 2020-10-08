@@ -1,10 +1,13 @@
 import React from 'react';
 
-import NewGenre from '../../components/NewGenre';
+import NewOrEditGenre from '../../components/NewOrEditGenre';
 
 const NewGenrePage = () => {
   return (
-    <NewGenre />
+    <NewOrEditGenre 
+      title="Cadastrar novo gênero"
+      placeholder="Nome do gênero"
+      title_button="Cadastrar" />
   )
 }
 

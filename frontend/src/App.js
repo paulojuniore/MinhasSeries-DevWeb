@@ -13,6 +13,7 @@ import Genres from './pages/Genres';
 import Series from './pages/Series';
 import NewGenrePage from './pages/NewGenrePage';
 import NewSeriePage from './pages/NewSeriePage';
+import EditGenre from './pages/EditGenre';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path='/generos/novoGenero' exact component={ NewGenrePage } />
           <Route path='/series' exact component={ Series } />
           <Route path='/series/novaSerie' exact component={ NewSeriePage } />
+          <Route path='/generos/:id' exact component={ EditGenre } />
         </Switch>
       </div>
     </Router>

@@ -87,7 +87,7 @@ const GeneralListComponent = (props) => {
                     <Link onClick={() => handleDelete(genero)} to="#" className="btn btn-danger">
                       <MdDelete />
                     </Link>
-                    <Link to="#" className='btn btn-warning'>
+                    <Link to='/generos/:id' className='btn btn-warning'>
                       <MdEdit />
                     </Link>
                   </td>

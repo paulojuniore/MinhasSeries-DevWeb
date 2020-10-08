@@ -8,7 +8,7 @@ import { useHistory } from 'react-router-dom';
 
 import api from '../../services/api';
 
-const NewGenre = () => {
+const NewGenre = (props) => {
   const history = useHistory();
   const [genero, setGenero] = useState('');
 
@@ -24,14 +24,14 @@ const NewGenre = () => {
 
   return (
     <div className="container">
-      <h3 style={{ marginTop: 30 }}>Cadastrar novo gênero</h3>
+      <h3 style={{ marginTop: 30 }}>{ props.title }</h3>
       <Form onSubmit={handleSubmit}>
         <FormGroup controlId="formBasic">
           <Form.Label style={{ marginTop: 15 }}>Nome do gênero</Form.Label>
           <Form.Control 
             required
             type="text" 
-            placeholder="Nome do gênero"
+            placeholder={ props.placeholder }
             value={ genero }
             onChange={ event => setGenero(event.target.value) }
           />
@@ -39,7 +39,7 @@ const NewGenre = () => {
         <Button 
           type="submit" 
           className="btn btn-primary">
-          Cadastrar
+          { props.title_button }
         </Button>
       </Form>
     </div>
