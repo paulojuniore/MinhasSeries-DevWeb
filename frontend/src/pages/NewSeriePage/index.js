@@ -1,10 +1,12 @@
 import React from 'react';
 
-import NewSerie from '../../components/NewSerie';
+import NewOrEditSerie from '../../components/NewOrEditSerie';
 
 const NewSeriePage = () => {
   return (
-    <NewSerie />
+    <NewOrEditSerie 
+      title="Cadastrar novo(a) filme/série"
+      title_button="Cadastrar" />
   );
 }
 

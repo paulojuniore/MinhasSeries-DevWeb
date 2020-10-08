@@ -8,7 +8,7 @@ import { useHistory } from 'react-router-dom';
 
 import api from '../../services/api';
 
-const NewSerie = () => {
+const NewOrEditSerie = (props) => {
   const history = useHistory();
   const [generos, setGeneros] = useState([]);
   const [serie, setSerie] = useState('');
@@ -73,7 +73,7 @@ const NewSerie = () => {
 
   return (
     <div className="container">
-      <h3 style={{ marginTop: 30 }}>Cadastrar novo(a) filme/série</h3>
+      <h3 style={{ marginTop: 30 }}>{ props.title }</h3>
       <Form onSubmit={ handleSubmit }>
         <FormGroup controlId="formBasic">
           <Form.Label style={{ marginTop: 15 }}>Nome do(a) série/filme:</Form.Label>
@@ -132,10 +132,10 @@ const NewSerie = () => {
         <Button 
           type="submit" 
           className="btn btn-primary"
-          style={{ marginTop: 15 }}>Cadastrar</Button>
+          style={{ marginTop: 15 }}>{ props.title_button }</Button>
       </Form>
     </div>
   )
 }
 
-export default NewSerie;
+export default NewOrEditSerie;
