@@ -13,6 +13,7 @@ routes.post('/generos', GenreController.store);
 routes.get('/generos', GenreController.list);
 routes.get('/generos/:id', GenreController.index);
 routes.delete('/generos/:id', GenreController.delete);
+routes.put('/generos/:id', GenreController.edit);
 
 routes.post('/series', SeriesController.store);
 routes.get('/series', SeriesController.list);

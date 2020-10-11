@@ -81,6 +81,6 @@ module.exports = {
       eh_favorita
     }, { where: {id} });
 
-    return res.status(200);
+    return res.status(200).json({ "edited": "true" });;
   }
 }

@@ -1,4 +1,5 @@
 const Genre = require('../models/Genre');
+const { edit } = require('./SeriesController');
 
 module.exports = {
   async store(req, res) {
@@ -43,5 +44,15 @@ module.exports = {
     } else {
       return res.status(404).json({ "error": "The genre does not exists" });
     }
+  },
+
+  async edit(req, res) {
+    const { id } = req.params;
+
+    const { genero } = req.body;
+
+    await Genre.update({ genero }, { where: { id } });
+
+    return res.status(200).json({ "edited": "true" });
   }
 }
