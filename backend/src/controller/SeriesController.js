@@ -60,5 +60,27 @@ module.exports = {
     } else {
       return res.status(404).json({ "error": "The serie/movie does not exists" });
     }
+  },
+
+  async edit(req, res) {
+    const { id } = req.params;
+
+    const { 
+      nome, 
+      eh_filme, 
+      id_genero, 
+      classificacao,
+      eh_favorita
+    } = req.body;
+
+    await Serie.update({
+      nome,
+      eh_filme,
+      id_genero,
+      classificacao,
+      eh_favorita
+    }, { where: {id} });
+
+    return res.status(200);
   }
 }

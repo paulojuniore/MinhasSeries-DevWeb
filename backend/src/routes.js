@@ -18,5 +18,6 @@ routes.post('/series', SeriesController.store);
 routes.get('/series', SeriesController.list);
 routes.get('/series/:id', SeriesController.index);
 routes.delete('/series/:id', SeriesController.delete);
+routes.put('/series/:id', SeriesController.edit);
 
 module.exports = routes;
