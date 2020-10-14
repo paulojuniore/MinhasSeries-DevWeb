@@ -10,7 +10,7 @@ const BodyHome = () => {
       .then(response => {
         setSeries(response.data);
       });
-  })
+  }, []);
 
   return (
     <div className='container'>

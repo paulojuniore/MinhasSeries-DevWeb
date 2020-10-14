@@ -24,7 +24,8 @@ const GeneralListComponent = (props) => {
           setSeries(response.data);
         });
     }
-  })
+    // eslint-disable-next-line
+  }, []);
 
   // função de comparação de nomes de gêneros para ordenação.
   function compare(a, b){
