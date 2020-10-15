@@ -14,7 +14,7 @@ const BodyHome = () => {
 
   return (
     <div className='container'>
-      <h2 style={{ marginTop: 25, marginBottom: 25 }}>
+      <h2 style={{ marginTop: 25, marginBottom: 25 }} data-testid="title">
         Filmes e Séries <span role="img" aria-label="Emojis">🎞️🎥</span>
       </h2>
       <table className='table table-striped'>
