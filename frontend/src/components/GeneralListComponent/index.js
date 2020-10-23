@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { MdDelete, MdEdit } from 'react-icons/md'; 
 
 import api from '../../services/api';
 
 import Genre from '../Genre';
+import Serie from '../Serie';
 
 import './styles.css';
 
@@ -43,15 +43,6 @@ const GeneralListComponent = (props) => {
     return compare;
   }
 
-  function handleDelete(dado) {
-    if (type === 'series') {
-      if (window.confirm(`Deseja remover a série/filme "${dado.nome}"?`)) {
-        api.delete(`/series/${dado.id}`)
-          .then(response => console.log(response));
-      }
-    }
-  }
-
   return (
     <div className='container'>
       <h2 className='title'>
@@ -86,20 +77,9 @@ const GeneralListComponent = (props) => {
 
           { (type === 'series') && series.map((serie, index) => {
               return (
-                <tr key={ index+1 }>
-                  <th>{ index+1 }</th>
-                  <td>{ serie.nome }</td>
-                  <td>{ serie.genero_serie.genero }</td>
-                  <td>{ `+${serie.classificacao}` }</td>
-                  <td>
-                    <Link onClick={() => handleDelete(serie)} to="#" className="btn btn-danger">
-                      <MdDelete />
-                    </Link>
-                    <Link to={`/series/${ serie.id }`} className='btn btn-warning'>
-                      <MdEdit />
-                    </Link>
-                  </td>
-                </tr>
+                <Serie 
+                  serie={ serie } 
+                  index={ index } />
               )
             })
           }
