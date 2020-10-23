@@ -4,6 +4,8 @@ import { MdDelete, MdEdit } from 'react-icons/md';
 
 import api from '../../services/api';
 
+import Genre from '../Genre';
+
 import './styles.css';
 
 const GeneralListComponent = (props) => {
@@ -42,13 +44,7 @@ const GeneralListComponent = (props) => {
   }
 
   function handleDelete(dado) {
-    if (type === 'generos') {
-      if (window.confirm(`Deseja remover o gênero "${dado.genero}"?`)) {
-        api.delete(`/generos/${dado.id}`)
-          .then(response => console.log(response));
-      }
-    } 
-    else if (type === 'series') {
+    if (type === 'series') {
       if (window.confirm(`Deseja remover a série/filme "${dado.nome}"?`)) {
         api.delete(`/series/${dado.id}`)
           .then(response => console.log(response));
@@ -81,18 +77,9 @@ const GeneralListComponent = (props) => {
         <tbody>
           { (type === 'generos') && generos.map((genero, index) => {
               return (
-                <tr key={ index+1 }>
-                  <th>{ index+1 }</th>
-                  <td>{ genero.genero }</td>
-                  <td>
-                    <Link onClick={() => handleDelete(genero)} to="#" className="btn btn-danger">
-                      <MdDelete />
-                    </Link>
-                    <Link to={`/generos/${ genero.id }`} className='btn btn-warning'>
-                      <MdEdit />
-                    </Link>
-                  </td>
-                </tr>
+                <Genre 
+                  genero={ genero }
+                  index={ index } />
               )
             }) 
           }
