@@ -1,16 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-import api from '../../services/api';
+import { useSeries } from '../../context/SeriesContext';
 
 const BodyHome = () => {
-  const [series, setSeries] = useState([]);
-
-  useEffect(() => {
-    api.get('/series')
-      .then(response => {
-        setSeries(response.data);
-      });
-  }, []);
+  const { series } = useSeries();
 
   return (
     <div className='container'>

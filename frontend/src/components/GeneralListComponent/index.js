@@ -6,11 +6,13 @@ import api from '../../services/api';
 import Genre from '../Genre';
 import Serie from '../Serie';
 
+import { useSeries } from '../../context/SeriesContext';
+
 import './styles.css';
 
 const GeneralListComponent = (props) => {
   const [generos, setGeneros] = useState([]);
-  const [series, setSeries] = useState([]);
+  const { series, setSeries } = useSeries();
   const type = props.type;
 
   useEffect(() => {

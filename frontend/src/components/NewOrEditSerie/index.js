@@ -94,7 +94,7 @@ const NewOrEditSerie = (props) => {
           >
             { generos.map((genero,index) => <option key={ index }>{ genero.genero }</option>) }
           </Form.Control>
-
+          <br></br>
           <Form.Label style={{marginTop: 35}}>Selecione a classificação indicativa:</Form.Label>
           <Form.Control 
             required

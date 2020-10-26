@@ -16,22 +16,26 @@ import NewSeriePage from './pages/NewSeriePage';
 import EditGenre from './pages/EditGenre';
 import EditSerie from './pages/EditSerie';
 
+import SeriesProvider from './context/SeriesContext';
+
 function App() {
   return (
-    <Router>
-      <Header />
-      <div className="App">
-        <Switch>
-          <Route path='/' exact component={ Home } />
-          <Route path='/generos' exact component={ Genres } />
-          <Route path='/generos/novoGenero' exact component={ NewGenrePage } />
-          <Route path='/series' exact component={ Series } />
-          <Route path='/series/novaSerie' exact component={ NewSeriePage } />
-          <Route path='/generos/:id' exact component={ EditGenre } />
-          <Route path='/series/:id' exact component={ EditSerie } />
-        </Switch>
-      </div>
-    </Router>
+    <SeriesProvider>
+      <Router>
+        <Header />
+        <div className="App">
+          <Switch>
+            <Route path='/' exact component={ Home } />
+            <Route path='/generos' exact component={ Genres } />
+            <Route path='/generos/novoGenero' exact component={ NewGenrePage } />
+            <Route path='/series' exact component={ Series } />
+            <Route path='/series/novaSerie' exact component={ NewSeriePage } />
+            <Route path='/generos/:id' exact component={ EditGenre } />
+            <Route path='/series/:id' exact component={ EditSerie } />
+          </Switch>
+        </div>
+      </Router>
+    </SeriesProvider>
   );
 }
 
