@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { 
   Form, 
   FormGroup, 
@@ -8,19 +8,18 @@ import { useHistory } from 'react-router-dom';
 
 import api from '../../services/api';
 
+import { useGenresAndSeries } from '../../context/GenresAndSeriesContext';
+
 const NewOrEditSerie = (props) => {
   const history = useHistory();
-  const [generos, setGeneros] = useState([]);
+  
+  const { generos } = useGenresAndSeries();
+
   const [serie, setSerie] = useState('');
   const [genero, setGenero] = useState('');
   const [classificacao, setClassificacao] = useState('');
   const [ehFilme, setEhFilme] = useState(false);
   const [ehFavorito, setEhFavorito] = useState(false);
-
-  useEffect(() => {
-    api.get('/generos')
-      .then(response => setGeneros(response.data))
-  });
 
   function handleChangeGenreType(e) {
     setGenero(e.target.value);
