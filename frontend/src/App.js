@@ -16,11 +16,11 @@ import NewSeriePage from './pages/NewSeriePage';
 import EditGenre from './pages/EditGenre';
 import EditSerie from './pages/EditSerie';
 
-import SeriesProvider from './context/SeriesContext';
+import GenresAndSeriesProvider from './context/GenresAndSeriesContext';
 
 function App() {
   return (
-    <SeriesProvider>
+    <GenresAndSeriesProvider>
       <Router>
         <Header />
         <div className="App">
@@ -35,7 +35,7 @@ function App() {
           </Switch>
         </div>
       </Router>
-    </SeriesProvider>
+    </GenresAndSeriesProvider>
   );
 }
 

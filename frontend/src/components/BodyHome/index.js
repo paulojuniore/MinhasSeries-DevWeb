@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { useSeries } from '../../context/SeriesContext';
+import { useGenresAndSeries } from '../../context/GenresAndSeriesContext';
 
 const BodyHome = () => {
-  const { series } = useSeries();
+  const { series } = useGenresAndSeries();
 
   return (
     <div className='container'>
