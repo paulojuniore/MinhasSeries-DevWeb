@@ -1,47 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-
-import api from '../../services/api';
 
 import Genre from '../Genre';
 import Serie from '../Serie';
 
+import { useGenresAndSeries } from '../../context/GenresAndSeriesContext';
+
 import './styles.css';
 
 const GeneralListComponent = (props) => {
-  const [generos, setGeneros] = useState([]);
-  const [series, setSeries] = useState([]);
+  const { generos } = useGenresAndSeries();
+  const { series } = useGenresAndSeries();
   const type = props.type;
-
-  useEffect(() => {
-    if (type === 'generos') {
-      api.get('/generos')
-        .then(response => {
-          let responseOrdered = response.data.sort(compare);
-          setGeneros(responseOrdered);
-        });
-    } else if (type === 'series') {
-      api.get('/series')
-        .then(response => {
-          setSeries(response.data);
-        });
-    }
-    // eslint-disable-next-line
-  }, []);
-
-  // função de comparação de nomes de gêneros para ordenação.
-  function compare(a, b){
-    const genreA = a.genero.toUpperCase();
-    const genreB = b.genero.toUpperCase();
-    
-    let compare = 0;
-    if(genreA > genreB){
-        compare = 1;
-    } else if(genreA < genreB){
-        compare = -1;
-    }
-    return compare;
-  }
 
   return (
     <div className='container'>

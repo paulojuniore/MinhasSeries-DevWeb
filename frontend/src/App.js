@@ -16,6 +16,8 @@ import NewSeriePage from './pages/NewSeriePage';
 import EditGenre from './pages/EditGenre';
 import EditSerie from './pages/EditSerie';
 
+import GenresAndSeriesProvider from './context/GenresAndSeriesContext';
+
 function App() {
   return (
     <Router>

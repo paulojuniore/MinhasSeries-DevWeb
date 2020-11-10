@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { 
   Form, 
   FormGroup, 
@@ -8,9 +8,13 @@ import { useHistory, useParams } from 'react-router-dom';
 
 import api from '../../services/api';
 
+import { useGenresAndSeries } from '../../context/GenresAndSeriesContext';
+
 const NewOrEditSerie = (props) => {
   const history = useHistory();
-  const [generos, setGeneros] = useState([]);
+  
+  const { generos } = useGenresAndSeries();
+
   const [serie, setSerie] = useState('');
   const [genero, setGenero] = useState('');
   const [classificacao, setClassificacao] = useState('');
@@ -97,7 +101,7 @@ const NewOrEditSerie = (props) => {
           >
             { generos.map((genero,index) => <option key={ index }>{ genero.genero }</option>) }
           </Form.Control>
-
+          <br></br>
           <Form.Label style={{marginTop: 35}}>Selecione a classificação indicativa:</Form.Label>
           <Form.Control 
             required
