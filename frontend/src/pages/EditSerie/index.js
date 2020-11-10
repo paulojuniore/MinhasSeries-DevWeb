@@ -6,7 +6,8 @@ const EditSerie = () => {
   return (
     <NewOrEditSerie 
       title="Editar série/filme"
-      title_button="Editar" />
+      title_button="Editar"
+      operation="edit" />
   );
 }
 

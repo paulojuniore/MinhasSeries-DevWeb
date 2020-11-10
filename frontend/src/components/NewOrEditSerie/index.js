@@ -22,8 +22,6 @@ const NewOrEditSerie = (props) => {
   const [ehFilme, setEhFilme] = useState(false);
   const [ehFavorito, setEhFavorito] = useState(false);
 
-  // const [lastSerie, setLastSerie] = useState({});
-
   const { id_serie } = useParams();
 
   function handleChangeGenreType(e) {
@@ -60,13 +58,26 @@ const NewOrEditSerie = (props) => {
       }
       const id_genero = findGenreId(genero);
 
-      api.post('/series', {
-        nome: serie,
-        eh_filme: ehFilme,
-        id_genero,
-        classificacao,
-        eh_favorita: ehFavorito
-      });
+      if (props.operation === 'create') {
+        api.post('/series', {
+          nome: serie,
+          eh_filme: ehFilme,
+          id_genero,
+          classificacao,
+          eh_favorita: ehFavorito
+        });
+      }
+      else if (props.operation === 'edit') {
+        api.put(`/series/${id_serie}`, {
+          nome: serie,
+          eh_filme: ehFilme,
+          id_genero,
+          classificacao,
+          eh_favorita: ehFavorito
+        });
+
+        alert('Filme/Série editada com sucesso!');
+      }
 
       history.push('/series');
     }
@@ -77,7 +88,13 @@ const NewOrEditSerie = (props) => {
 
   useEffect(() => {
     api.get(`/series/${id_serie}`)
-      .then(response => console.log(response.data));
+      .then(response => {
+        setSerie(response.data.nome);
+        setEhFilme(response.data.eh_serie);
+        setGenero(response.data.genero_serie.genero);
+        setClassificacao(response.data.classificacao);
+        setEhFavorito(response.data.eh_favorita);
+      });
     
   }, [id_serie]);
 
@@ -97,6 +114,7 @@ const NewOrEditSerie = (props) => {
           <Form.Label style={{marginTop: 35}}>Selecione o gênero:</Form.Label>
           <Form.Control 
             required
+            defaultValue="genero"
             as="select" 
             custom 
             style={{width: 600, marginLeft: 30}} 

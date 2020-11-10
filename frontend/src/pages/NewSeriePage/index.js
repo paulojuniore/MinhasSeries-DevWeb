@@ -6,7 +6,8 @@ const NewSeriePage = () => {
   return (
     <NewOrEditSerie 
       title="Cadastrar novo(a) filme/série"
-      title_button="Cadastrar" />
+      title_button="Cadastrar"
+      operation="create" />
   );
 }
 
