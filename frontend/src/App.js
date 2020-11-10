@@ -20,20 +20,22 @@ import GenresAndSeriesProvider from './context/GenresAndSeriesContext';
 
 function App() {
   return (
-    <Router>
-      <Header />
-      <div className="App">
-        <Switch>
-          <Route path='/' exact component={ Home } />
-          <Route path='/generos' exact component={ Genres } />
-          <Route path='/generos/novoGenero' exact component={ NewGenrePage } />
-          <Route path='/series' exact component={ Series } />
-          <Route path='/series/novaSerie' exact component={ NewSeriePage } />
-          <Route path='/generos/:id_genero' exact component={ EditGenre } />
-          <Route path='/series/:id' exact component={ EditSerie } />
-        </Switch>
-      </div>
-    </Router>
+    <GenresAndSeriesProvider>
+      <Router>
+        <Header />
+        <div className="App">
+          <Switch>
+            <Route path='/' exact component={ Home } />
+            <Route path='/generos' exact component={ Genres } />
+            <Route path='/generos/novoGenero' exact component={ NewGenrePage } />
+            <Route path='/series' exact component={ Series } />
+            <Route path='/series/novaSerie' exact component={ NewSeriePage } />
+            <Route path='/generos/:id_genero' exact component={ EditGenre } />
+            <Route path='/series/:id_serie' exact component={ EditSerie } />
+          </Switch>
+        </div>
+      </Router>
+    </GenresAndSeriesProvider>
   );
 }
 

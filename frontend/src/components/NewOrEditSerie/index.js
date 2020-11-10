@@ -9,6 +9,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import api from '../../services/api';
 
 import { useGenresAndSeries } from '../../context/GenresAndSeriesContext';
+import { useEffect } from 'react';
 
 const NewOrEditSerie = (props) => {
   const history = useHistory();
@@ -21,12 +22,9 @@ const NewOrEditSerie = (props) => {
   const [ehFilme, setEhFilme] = useState(false);
   const [ehFavorito, setEhFavorito] = useState(false);
 
-  const { id } = useParams();
+  // const [lastSerie, setLastSerie] = useState({});
 
-  useEffect(() => {
-    api.get('/generos')
-      .then(response => setGeneros(response.data))
-  });
+  const { id_serie } = useParams();
 
   function handleChangeGenreType(e) {
     setGenero(e.target.value);
@@ -77,10 +75,15 @@ const NewOrEditSerie = (props) => {
     }
   } 
 
+  useEffect(() => {
+    api.get(`/series/${id_serie}`)
+      .then(response => console.log(response.data));
+    
+  }, [id_serie]);
+
   return (
     <div className="container">
       <h3 style={{ marginTop: 30 }}>{ props.title }</h3>
-      <p>{ id }</p>
       <Form onSubmit={ handleSubmit }>
         <FormGroup controlId="formBasic">
           <Form.Label style={{ marginTop: 15 }}>Nome do(a) série/filme:</Form.Label>
