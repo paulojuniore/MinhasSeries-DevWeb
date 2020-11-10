@@ -27,7 +27,7 @@ function App() {
           <Route path='/generos/novoGenero' exact component={ NewGenrePage } />
           <Route path='/series' exact component={ Series } />
           <Route path='/series/novaSerie' exact component={ NewSeriePage } />
-          <Route path='/generos/:id' exact component={ EditGenre } />
+          <Route path='/generos/:id_genero' exact component={ EditGenre } />
           <Route path='/series/:id' exact component={ EditSerie } />
         </Switch>
       </div>

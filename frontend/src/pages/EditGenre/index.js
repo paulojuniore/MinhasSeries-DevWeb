@@ -7,7 +7,8 @@ const EditGenre = () => {
     <NewOrEditGenre 
       title="Editar gênero"
       placeholder="Novo nome do gênero"
-      title_button="Editar" />
+      title_button="Editar"
+      operation="edit" />
   )
 }
 

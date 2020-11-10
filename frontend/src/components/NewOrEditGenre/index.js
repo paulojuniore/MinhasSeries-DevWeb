@@ -1,26 +1,45 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Form, 
   FormGroup, 
   Button 
 } from 'react-bootstrap';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
 import api from '../../services/api';
 
 const NewGenre = (props) => {
   const history = useHistory();
   const [genero, setGenero] = useState('');
+  const [lastGenreName, setLastGenreName] = useState('');
+
+  const { id_genero } = useParams();
 
   function handleSubmit(event) {
     event.preventDefault();
-    api.post('/generos', {
-      genero
-    })
-      .then(response => console.log(response));
-    history.push('/generos');
-    setGenero('');
+    if (props.operation === 'create') {
+      api.post('/generos', {
+        genero
+      })
+        .then(response => console.log(response));
+      history.push('/generos');
+      setGenero('');
+    } 
+    else if (props.operation === 'edit') {
+      api.put(`/generos/${id_genero}`, {
+        genero
+      });
+      alert('Gênero editado com sucesso!');
+      history.push('/generos');
+    }
   }
+
+  useEffect(() => {
+    api.get(`/generos/${id_genero}`)
+      .then(response => {
+        setLastGenreName(response.data.genero)
+      });
+  }, [id_genero]);
 
   return (
     <div className="container">
@@ -31,7 +50,7 @@ const NewGenre = (props) => {
           <Form.Control 
             required
             type="text" 
-            placeholder={ props.placeholder }
+            placeholder={ lastGenreName === '' ? props.placeholder : lastGenreName }
             value={ genero }
             onChange={ event => setGenero(event.target.value) }
           />

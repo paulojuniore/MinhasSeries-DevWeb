@@ -7,7 +7,8 @@ const NewGenrePage = () => {
     <NewOrEditGenre 
       title="Cadastrar novo gênero"
       placeholder="Nome do gênero"
-      title_button="Cadastrar" />
+      title_button="Cadastrar"
+      operation="create" />
   )
 }
 

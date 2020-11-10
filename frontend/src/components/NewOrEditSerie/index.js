@@ -4,7 +4,7 @@ import {
   FormGroup, 
   Button
 } from 'react-bootstrap';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
 import api from '../../services/api';
 
@@ -16,6 +16,8 @@ const NewOrEditSerie = (props) => {
   const [classificacao, setClassificacao] = useState('');
   const [ehFilme, setEhFilme] = useState(false);
   const [ehFavorito, setEhFavorito] = useState(false);
+
+  const { id } = useParams();
 
   useEffect(() => {
     api.get('/generos')
@@ -74,6 +76,7 @@ const NewOrEditSerie = (props) => {
   return (
     <div className="container">
       <h3 style={{ marginTop: 30 }}>{ props.title }</h3>
+      <p>{ id }</p>
       <Form onSubmit={ handleSubmit }>
         <FormGroup controlId="formBasic">
           <Form.Label style={{ marginTop: 15 }}>Nome do(a) série/filme:</Form.Label>
