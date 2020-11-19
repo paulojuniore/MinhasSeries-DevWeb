@@ -2,7 +2,7 @@ import React from 'react';
 
 import GeneralListComponent from '../../components/GeneralListComponent';
 
-const columns = ["#", "Nome", "Gênero", "Classificação", "Ação"]
+const columns = ["#", "Nome", "Gênero", "Classificação", "Ação", "Favorito(a)"]
 
 const Series = () => {
   return (

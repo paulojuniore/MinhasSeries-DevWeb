@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { MdDelete, MdEdit } from 'react-icons/md'; 
+import { FiStar } from 'react-icons/fi';
+import { FaStar } from 'react-icons/fa';
 
 import api from '../../services/api';
 
@@ -26,6 +28,9 @@ const Serie = ({ serie, index }) => {
         <Link to={`/series/${ serie.id }`} className='btn btn-warning'>
           <MdEdit />
         </Link>
+      </td>
+      <td>
+        <FiStar color="#ec1" />
       </td>
     </tr>
   )
