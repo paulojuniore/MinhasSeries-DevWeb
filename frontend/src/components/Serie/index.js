@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { MdDelete, MdEdit } from 'react-icons/md'; 
 import { FiStar } from 'react-icons/fi';
@@ -7,7 +7,6 @@ import { FaStar } from 'react-icons/fa';
 import api from '../../services/api';
 
 const Serie = ({ serie, index }) => {
-  const [fav, setFav] = useState(false);
 
   function handleDelete(dado) {
     if (window.confirm(`Deseja remover a série/filme "${dado.nome}"?`)) {
@@ -17,7 +16,13 @@ const Serie = ({ serie, index }) => {
   }
 
   function handleFavorite() {
-    setFav(!fav);
+    api.put(`series/${serie.id}`, {
+      nome: serie.nome,
+      eh_filme: serie.eh_filme,
+      id_genero: serie.id_genero,
+      classificacao: serie.classificacao,
+      eh_favorita: !serie.eh_favorita
+    });
   }
 
   return (
@@ -36,7 +41,7 @@ const Serie = ({ serie, index }) => {
       </td>
       <td>
         {
-          fav ? 
+          serie.eh_favorita ? 
             <FaStar color="#ec3" onClick={ handleFavorite } />
             :
             <FiStar color="#000" onClick={ handleFavorite } />
